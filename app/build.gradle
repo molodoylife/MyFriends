@@ -12,7 +12,7 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -23,6 +23,9 @@ android {
 }
 
 dependencies {
+    implementation project(':presentationcomponents')
+
+
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation deps.kotlin.stdlib
     implementation deps.support.app_compat
@@ -39,19 +42,25 @@ dependencies {
     // "androidx.fragment:fragment-testing" must be scoped to all sourcesets.
     implementation deps.support.fragment_testing
 
-    // Espresso and UI Testing
-    androidTestImplementation deps.atsl.ext_junit
-    androidTestImplementation deps.mockito.android
-    androidTestImplementation deps.espresso.core
-    androidTestImplementation deps.espresso.contrib
-    androidTestImplementation deps.espresso.intents
+    implementation group: 'javax.inject', name: 'javax.inject', version: '1'
 
-    // Host-side tests
-    testImplementation deps.atsl.ext_junit
-    testImplementation deps.robolectric
-    testImplementation deps.mockito.core
-    // Espresso API running in Robolectric
-    testImplementation deps.espresso.core
-    testImplementation deps.espresso.contrib
-    testImplementation deps.espresso.intents
+    // Kodein
+    implementation deps.kodein.core
+    implementation deps.kodein.android
+
+//    // Espresso and UI Testing
+//    androidTestImplementation deps.atsl.ext_junit
+//    androidTestImplementation deps.mockito.android
+//    androidTestImplementation deps.espresso.core
+//    androidTestImplementation deps.espresso.contrib
+//    androidTestImplementation deps.espresso.intents
+//
+//    // Host-side tests
+//    testImplementation deps.atsl.ext_junit
+//    testImplementation deps.robolectric
+//    testImplementation deps.mockito.core
+//    // Espresso API running in Robolectric
+//    testImplementation deps.espresso.core
+//    testImplementation deps.espresso.contrib
+//    testImplementation deps.espresso.intents
 }

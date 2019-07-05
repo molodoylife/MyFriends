@@ -21,5 +21,10 @@
               android:label="MainPageFragment">
         <action android:id="@+id/action_mainPageFragment_to_searchFragment"
                 app:destination="@id/searchFragment"/>
+        <action android:id="@+id/action_mainPageFragment_to_addContactFragment"
+                app:destination="@id/addContactFragment"/>
     </fragment>
+    <fragment android:id="@+id/addContactFragment"
+              android:name="ru.narod.pricolistov.rememberfriends.presentation.add_contact.AddContactFragment"
+              android:label="AddContactFragment"/>
 </navigation>
