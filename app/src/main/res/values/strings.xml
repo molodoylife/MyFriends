@@ -3,4 +3,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="loginFragmentEnterPasswordForLogin">To enter the app please tap a correct password</string>
+    <string name="setPasswordFragmentSetPasswordForApp">Would you like to set a password for access to app</string>
+    <string name="setNewPasswordFragmentEnterNewPassword">Enter new password</string>
+    <string name="setNewPasswordFragmentEnterNewPasswordAgain">Enter new password again</string>
 </resources>

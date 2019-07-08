@@ -29,7 +29,7 @@ class MainPageFragment : Fragment() {
         }
 
         mainPrev.setOnClickListener {
-            Navigation.findNavController(view).popBackStack()
+            Navigation.findNavController(view).navigateUp()
         }
     }
 

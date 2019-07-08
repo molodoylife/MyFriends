@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.add_contact.*
-import kotlinx.android.synthetic.main.login_fragment.*
 import org.kodein.di.Kodein
 import org.kodein.di.generic.instance
 import ru.narod.pricolistov.presentationcomponents.view.BaseFragment

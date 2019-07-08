@@ -8,9 +8,9 @@ import androidx.navigation.Navigation
 
 fun Fragment.navController(): NavController = Navigation.findNavController(view!!)
 
-fun Fragment.navController(@IdRes controllerRes: Int): NavController {
-    return Navigation.findNavController(activity as Activity, controllerRes)
-}
+//fun Fragment.navController(@IdRes controllerRes: Int): NavController {
+//    return Navigation.findNavController(activity as Activity, controllerRes)
+//}
 
 //fun Fragment.hideSoftKeyboard() {
 //    activity?.hideSoftKeyboard()

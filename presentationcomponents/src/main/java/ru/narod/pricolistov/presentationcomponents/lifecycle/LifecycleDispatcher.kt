@@ -9,5 +9,4 @@ class LifecycleDispatcher(private vararg val observers: LifecycleObserver) {
     fun attachTo(lifecycle: Lifecycle) {
         observers.forEach { lifecycle += it }
     }
-
 }

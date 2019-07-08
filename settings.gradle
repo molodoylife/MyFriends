@@ -1,1 +1,1 @@
-include ':app', ':presentationcomponents'
+include ':app', ':presentationcomponents', ':core'
