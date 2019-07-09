@@ -45,9 +45,4 @@
     <fragment android:id="@+id/addContactFragment"
               android:name="ru.narod.pricolistov.rememberfriends.presentation.add_contact.AddContactFragment"
               android:label="AddContactFragment"/>
-    <fragment android:id="@+id/placeholder">
-        <action android:id="@+id/action_placeholder_to_loginFragment" app:destination="@id/loginFragment"/>
-        <action android:id="@+id/action_placeholder_to_setNewPassword" app:destination="@id/setNewPassword"/>
-        <action android:id="@+id/action_placeholder_to_mainPageFragment" app:destination="@id/mainPageFragment"/>
-    </fragment>
 </navigation>

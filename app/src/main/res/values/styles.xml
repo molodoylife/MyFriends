@@ -8,4 +8,16 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <style name="Splash" parent="Theme.MaterialComponents.NoActionBar.Bridge">
+        <!--<item name="android:colorBackground">@color/colorAccent</item>-->
+        <!---->
+        <!---->
+        <!--<item name="android:windowTranslucentStatus">true</item>-->
+        <!--<item name="android:windowDisablePreview">false</item>-->
+        <!---->
+        <!--<item name="android:windowAnimationStyle">@null</item>-->
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+    </style>
+
 </resources>
