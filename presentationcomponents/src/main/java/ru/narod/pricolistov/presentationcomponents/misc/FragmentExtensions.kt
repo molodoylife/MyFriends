@@ -1,7 +1,5 @@
 package ru.narod.pricolistov.presentationcomponents.misc
 
-import android.app.Activity
-import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation

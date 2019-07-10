@@ -1,4 +1,4 @@
-package ru.narod.pricolistov.model.user.vo
+package ru.narod.pricolistov.core.user.model.vo
 
 data class Password(val password: String) {
     companion object {

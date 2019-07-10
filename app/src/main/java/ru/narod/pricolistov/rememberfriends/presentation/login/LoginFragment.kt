@@ -5,9 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.login_fragment.*
 import org.kodein.di.Kodein
 import org.kodein.di.generic.instance
+import org.kodein.di.generic.on
+import org.kodein.di.named
 import ru.narod.pricolistov.presentationcomponents.view.BaseFragment
 import ru.narod.pricolistov.rememberfriends.R
 
@@ -17,7 +20,7 @@ class LoginFragment : BaseFragment(){
         import(loginModule)
     }
 
-    private val viewModel: LoginViewModel by instance()
+    private val loginModel: LoginViewModel by  kodein.on(context = this).instance()
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -29,7 +32,8 @@ class LoginFragment : BaseFragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         loginNext.setOnClickListener {
-            viewModel.navigateToMainPage()
+            //loginModel.navigateToMainPage()
+            Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_mainPageFragment)
         }
     }
 }
