@@ -33,3 +33,15 @@ fun <T : ViewModel, A> singleArgViewModelFactory(constructor: (A) -> T):
         }
     }
 }
+
+fun <T : ViewModel, A, B> doubleArgViewModelFactory(constructor: (A, B) -> T):
+            (A, B) -> ViewModelProvider.NewInstanceFactory {
+    return { argA: A, argB: B ->
+        object : ViewModelProvider.NewInstanceFactory() {
+            @Suppress("UNCHECKED_CAST")
+            override fun <V : ViewModel> create(modelClass: Class<V>): V {
+                return constructor(argA, argB) as V
+            }
+        }
+    }
+}

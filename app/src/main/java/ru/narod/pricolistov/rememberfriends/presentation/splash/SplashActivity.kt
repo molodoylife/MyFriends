@@ -8,11 +8,13 @@ import org.kodein.di.KodeinAware
 import org.kodein.di.LazyKodein
 import org.kodein.di.generic.instance
 import org.kodein.di.generic.on
-import org.kodein.di.named
 import ru.narod.pricolistov.infrastructure.user.repo.UserRepository
 import ru.narod.pricolistov.rememberfriends.presentation.MainActivity
 
 class SplashActivity : AppCompatActivity(), KodeinAware {
+    companion object {
+        const val EXTRA_FIRST_TIME = "extraIsFirstTime"
+    }
     override val kodein by LazyKodein {
         Kodein {
             import(splashModule)
@@ -28,9 +30,9 @@ class SplashActivity : AppCompatActivity(), KodeinAware {
 
         val isFirst = userRepository.getIfFirstSession()
 
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, MainActivity::class.java).putExtra(EXTRA_FIRST_TIME, isFirst)
         startActivity(intent)
-        //overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
         finish()
     }
 }

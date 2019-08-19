@@ -1,6 +1,5 @@
 package ru.narod.pricolistov.rememberfriends.presentation.login
 
-import androidx.navigation.NavOptions
 import ru.narod.pricolistov.presentationcomponents.misc.navController
 import ru.narod.pricolistov.presentationcomponents.navigation.Navigator
 import ru.narod.pricolistov.rememberfriends.R

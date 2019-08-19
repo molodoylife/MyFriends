@@ -17,7 +17,7 @@ import java.util.*
 class AddContactFragment : BaseFragment(){
 
     override val kodein by Kodein.lazy {
-        import(loginModule)
+        //import(loginModule())
     }
 
     private val random: Random by instance()
@@ -28,10 +28,10 @@ class AddContactFragment : BaseFragment(){
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        addContact.setOnClickListener {
-            Navigation.findNavController(view).popBackStack()
-        }
-
-        Toast.makeText(activity, "${random.nextInt()}", Toast.LENGTH_SHORT).show()
+//        addContact.setOnClickListener {
+//            Navigation.findNavController(view).popBackStack()
+//        }
+//
+//        Toast.makeText(activity, "${random.nextInt()}", Toast.LENGTH_SHORT).show()
     }
 }

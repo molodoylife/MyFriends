@@ -9,7 +9,7 @@ interface UserRepository {
     fun getIfFirstSession(): Boolean
 }
 
-class UserRepositoryImp(val context: Context): UserRepository {
+class UserRepositoryImp(private val context: Context): UserRepository {
     private companion object {
         const val PREFS_NAME = "presentation.repository"
         const val KEY_FIRST_SESSION = "session.first"

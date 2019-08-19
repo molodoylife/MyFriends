@@ -9,9 +9,9 @@ import java.util.*
  * </p>
  * Created by user on 1/30/18.
  */
-open class Navigator<Component : Any>(private var _component: Component? = null) {
+open class Navigator<Component : Any>(private  var _component: Component? = null) {
 
-    protected val component
+    private val component
         get() = _component
 
     private val queue: Queue<(Component) -> Unit> = LinkedList()
@@ -28,7 +28,7 @@ open class Navigator<Component : Any>(private var _component: Component? = null)
         val it = queue.iterator()
 
         while (it.hasNext()) {
-            it.next()(component)
+            it.next() (component)
             it.remove()
         }
 

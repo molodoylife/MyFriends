@@ -17,10 +17,10 @@ import ru.narod.pricolistov.rememberfriends.R
 
 class LoginFragment : BaseFragment(){
     override val kodein by Kodein.lazy {
-        import(loginModule)
+        import(loginModule(this@LoginFragment))
     }
 
-    private val loginModel: LoginViewModel by  kodein.on(context = this).instance()
+    private val loginModel: LoginViewModel by kodein.on(context = this).instance()
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

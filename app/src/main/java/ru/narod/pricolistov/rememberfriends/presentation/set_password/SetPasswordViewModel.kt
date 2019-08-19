@@ -1,7 +1,8 @@
 package ru.narod.pricolistov.rememberfriends.presentation.set_password
 
 import androidx.lifecycle.ViewModel
-import ru.narod.pricolistov.presentationcomponents.misc.singleArgViewModelFactory
+import ru.narod.pricolistov.infrastructure.user.repo.UserRepository
+import ru.narod.pricolistov.presentationcomponents.misc.doubleArgViewModelFactory
 
 abstract class SetPasswordViewModel : ViewModel(){
 
@@ -11,9 +12,10 @@ abstract class SetPasswordViewModel : ViewModel(){
 
 }
 
-class SetPasswordViewModelImp(private val navigator: SetPasswordNavigator): SetPasswordViewModel(){
+class SetPasswordViewModelImp(private val navigator: SetPasswordNavigator,
+                              private val userRepository: UserRepository): SetPasswordViewModel(){
     companion object {
-        val FACTORY = singleArgViewModelFactory(::SetPasswordViewModelImp)
+        val FACTORY = doubleArgViewModelFactory(::SetPasswordViewModelImp)
     }
 
     override fun navigateUp() {
@@ -21,6 +23,7 @@ class SetPasswordViewModelImp(private val navigator: SetPasswordNavigator): SetP
     }
 
     override fun navigateToMainPage() {
+        userRepository.storeIfFirstSession()
         navigator.navigateToMainPage()
     }
 }

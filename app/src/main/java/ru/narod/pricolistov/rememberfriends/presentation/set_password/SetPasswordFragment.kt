@@ -13,7 +13,7 @@ import ru.narod.pricolistov.rememberfriends.R
 
 class SetPasswordFragment : BaseFragment(){
     override val kodein by Kodein.lazy {
-        import(setPasswordModule)
+        import(setPasswordModule(this@SetPasswordFragment))
     }
 
     private val viewModel: SetPasswordViewModel by instance()
