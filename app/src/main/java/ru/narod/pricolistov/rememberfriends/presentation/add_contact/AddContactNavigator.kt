@@ -1,16 +1,13 @@
 package ru.narod.pricolistov.rememberfriends.presentation.add_contact
 
-import ru.narod.pricolistov.presentationcomponents.misc.navController
-import ru.narod.pricolistov.presentationcomponents.navigation.Navigator
-import ru.narod.pricolistov.rememberfriends.R
-import ru.narod.pricolistov.rememberfriends.presentation.login.LoginFragment
+import androidx.navigation.fragment.findNavController
+import ru.narod.pricolistov.presentationcomponents.view.BaseFragment
 
-abstract class AddContactNavigator : Navigator<AddContactFragment>() {
-    abstract fun navigateUp()
+
+abstract class AddContactNavigator {
+    abstract fun navigateUp(): Boolean
 }
 
-class AddContactNavigatorImp: AddContactNavigator() {
-    override fun navigateUp() = runOrEnqueue {
-        it.navController().navigateUp()
-    }
+class AddContactNavigatorImp(private val fragment: BaseFragment): AddContactNavigator() {
+    override fun navigateUp() = fragment.findNavController().navigateUp()
 }

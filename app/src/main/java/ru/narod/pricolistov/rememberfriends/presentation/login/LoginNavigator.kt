@@ -1,22 +1,18 @@
 package ru.narod.pricolistov.rememberfriends.presentation.login
 
-import ru.narod.pricolistov.presentationcomponents.misc.navController
-import ru.narod.pricolistov.presentationcomponents.navigation.Navigator
+import androidx.navigation.fragment.findNavController
+import ru.narod.pricolistov.presentationcomponents.view.BaseFragment
 import ru.narod.pricolistov.rememberfriends.R
 
-abstract class LoginNavigator : Navigator<LoginFragment>() {
-    abstract fun navigateUp()
+abstract class LoginNavigator {
+    abstract fun navigateUp(): Boolean
 
     abstract fun navigateToMainPage()
 }
 
-class LoginNavigatorImp : LoginNavigator() {
-    override fun navigateUp() = runOrEnqueue {
-        it.navController().navigateUp()
-    }
+class LoginNavigatorImp(private val fragment: BaseFragment) : LoginNavigator() {
+    override fun navigateUp() = fragment.findNavController().navigateUp()
 
-    override fun navigateToMainPage() = runOrEnqueue {
-        it.navController().navigate(
-            R.id.action_loginFragment_to_mainPageFragment)
-    }
+    override fun navigateToMainPage() =  fragment.findNavController().navigate(
+        R.id.action_loginFragment_to_mainPageFragment)
 }

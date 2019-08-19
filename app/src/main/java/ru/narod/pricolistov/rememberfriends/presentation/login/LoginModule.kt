@@ -3,21 +3,18 @@ package ru.narod.pricolistov.rememberfriends.presentation.login
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import org.kodein.di.Kodein
+import org.kodein.di.Kodein.Module
 import org.kodein.di.android.ActivityRetainedScope
-import org.kodein.di.generic.*
-import ru.narod.pricolistov.presentationcomponents.lifecycle.LifecycleDispatcher
-import ru.narod.pricolistov.presentationcomponents.lifecycle.NavigatorLifecycleAdapter
-import javax.inject.Provider
+import org.kodein.di.android.x.AndroidLifecycleScope
+import org.kodein.di.generic.bind
+import org.kodein.di.generic.instance
+import org.kodein.di.generic.scoped
+import org.kodein.di.generic.singleton
 
-fun loginModule(fragment: Fragment) = Kodein.Module("login") {
-    bind<LoginNavigator>() with singleton { LoginNavigatorImp() }
-    bind<LifecycleDispatcher>() with provider { LifecycleDispatcherProvider(instance()).get() }
+fun loginModule(fragment: LoginFragment) = Module("login") {
+    bind<LoginNavigator>() with singleton { LoginNavigatorImp(fragment) }
 
-    bind<LoginViewModel>(tag = "loginModel") with scoped(ActivityRetainedScope).singleton {
+    bind<LoginViewModel>() with scoped(ActivityRetainedScope).singleton {
         ViewModelProviders.of(fragment, LoginViewModelImp.FACTORY(instance())).get(LoginViewModelImp::class.java)
     }
-}
-
-class LifecycleDispatcherProvider (private val navigator: LoginNavigator) : Provider<LifecycleDispatcher> {
-    override fun get() = LifecycleDispatcher(NavigatorLifecycleAdapter(navigator))
 }
