@@ -1,23 +1,25 @@
-package ru.narod.pricolistov.rememberfriends.presentation.splash
+package ru.narod.pricolistov.rememberfriends.presentation.ui.splash
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.LazyKodein
 import org.kodein.di.generic.instance
 import org.kodein.di.generic.on
 import ru.narod.pricolistov.infrastructure.user.repo.UserRepository
-import ru.narod.pricolistov.rememberfriends.presentation.MainActivity
+import ru.narod.pricolistov.presentationcomponents.misc.putExtra
+import ru.narod.pricolistov.rememberfriends.presentation.ui.MainActivity
 
 class SplashActivity : AppCompatActivity(), KodeinAware {
-    companion object {
-        const val EXTRA_FIRST_TIME = "extraIsFirstTime"
-    }
+
     override val kodein by LazyKodein {
         Kodein {
-            import(splashModule)
+            import(splashModule(this@SplashActivity))
         }
     }
 
@@ -26,11 +28,15 @@ class SplashActivity : AppCompatActivity(), KodeinAware {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        Thread.sleep(2000)
+        val session = runBlocking {
+            Thread.sleep(2000)
+            userRepository.getCurrentUserSession()
+        }
 
-        val isFirst = userRepository.getIfFirstSession()
+        val intent = Intent(this, MainActivity::class.java).apply {
+            putExtra(session)
+        }
 
-        val intent = Intent(this, MainActivity::class.java).putExtra(EXTRA_FIRST_TIME, isFirst)
         startActivity(intent)
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
         finish()
