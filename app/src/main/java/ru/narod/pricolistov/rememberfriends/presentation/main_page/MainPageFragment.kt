@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.main_page_fragment.*
 import ru.narod.pricolistov.rememberfriends.R
 
@@ -17,19 +17,16 @@ class MainPageFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val view = inflater.inflate(R.layout.main_page_fragment, container, false)
-
-
-        return view
+        return inflater.inflate(R.layout.main_page_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         mainNext.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_mainPageFragment_to_searchFragment)
+            findNavController().navigateUp()
         }
 
         mainPrev.setOnClickListener {
-            Navigation.findNavController(view).navigateUp()
+            findNavController().popBackStack()
         }
     }
 

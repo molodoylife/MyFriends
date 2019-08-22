@@ -7,9 +7,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.login_fragment.*
 import org.kodein.di.Kodein
-import org.kodein.di.direct
 import org.kodein.di.generic.instance
-import org.kodein.di.generic.on
 import ru.narod.pricolistov.presentationcomponents.view.BaseFragment
 import ru.narod.pricolistov.rememberfriends.R
 
@@ -19,7 +17,7 @@ class LoginFragment : BaseFragment(){
         import(loginModule(this@LoginFragment))
     }
 
-    private val loginModel: LoginViewModel by lazy { on(requireActivity()).direct.instance<LoginViewModel>() }
+    private val loginModel: LoginViewModel by instance()
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

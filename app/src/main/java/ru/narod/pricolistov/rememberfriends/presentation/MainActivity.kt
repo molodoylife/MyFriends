@@ -34,4 +34,5 @@ class MainActivity : AppCompatActivity(), KodeinAware {
 
         navHostFragment.navController.graph = graph
     }
+
 }

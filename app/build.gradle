@@ -54,19 +54,21 @@ dependencies {
     implementation deps.kodein.core
     implementation deps.kodein.android
 
-//    // Espresso and UI Testing
-//    androidTestImplementation deps.atsl.ext_junit
-//    androidTestImplementation deps.mockito.android
-//    androidTestImplementation deps.espresso.core
-//    androidTestImplementation deps.espresso.contrib
-//    androidTestImplementation deps.espresso.intents
+    // Espresso and UI Testing
+    androidTestImplementation deps.atsl.ext_junit
+    androidTestImplementation deps.mockito.android
+    androidTestImplementation deps.espresso.core
+    androidTestImplementation deps.espresso.contrib
+    androidTestImplementation deps.espresso.intents
 //
 //    // Host-side tests
 //    testImplementation deps.atsl.ext_junit
 //    testImplementation deps.robolectric
 //    testImplementation deps.mockito.core
 //    // Espresso API running in Robolectric
-//    testImplementation deps.espresso.core
-//    testImplementation deps.espresso.contrib
-//    testImplementation deps.espresso.intents
+    testImplementation deps.espresso.core
+    testImplementation deps.espresso.contrib
+    testImplementation deps.espresso.intents
+
+    implementation "androidx.fragment:fragment-testing:1.1.0-alpha07"
 }
