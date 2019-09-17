@@ -30,5 +30,9 @@ class SetPasswordFragment : BaseFragment(){
         tvSetPasswordLater.setOnClickListener {
             viewModel.navigateToMainPage()
         }
+
+        btnSaveSetNewPassword.setOnClickListener {
+            //viewModel.setNewPassword()
+        }
     }
 }

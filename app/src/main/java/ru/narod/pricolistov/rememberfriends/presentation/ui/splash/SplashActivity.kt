@@ -1,19 +1,14 @@
 package ru.narod.pricolistov.rememberfriends.presentation.ui.splash
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withContext
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.LazyKodein
 import org.kodein.di.generic.instance
 import org.kodein.di.generic.on
 import ru.narod.pricolistov.infrastructure.user.repo.UserRepository
-import ru.narod.pricolistov.presentationcomponents.misc.putExtra
-import ru.narod.pricolistov.rememberfriends.presentation.ui.MainActivity
 
 class SplashActivity : AppCompatActivity(), KodeinAware {
 
@@ -24,6 +19,7 @@ class SplashActivity : AppCompatActivity(), KodeinAware {
     }
 
     private val userRepository: UserRepository by kodein.on(context = this).instance()
+    private val splashViewModel: SplashViewModel by kodein.on(context = this).instance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,12 +29,6 @@ class SplashActivity : AppCompatActivity(), KodeinAware {
             userRepository.getCurrentUserSession()
         }
 
-        val intent = Intent(this, MainActivity::class.java).apply {
-            putExtra(session)
-        }
-
-        startActivity(intent)
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-        finish()
+        splashViewModel.navigateToMainActivity(this, session)
     }
 }
